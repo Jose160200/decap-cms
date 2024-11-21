@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway # Use Git Gateway for authentication (Netlify setup)
+  branch: main # Replace with your repository's default branch name
+
+site_url: https://obstzmtwordpress.netlify.app # URL of your website
+
+media_folder: "static/images/uploads" # Path where uploaded files are stored in the repository
+public_folder: "/images/uploads" # Path to access uploaded files in the public website
+
+collections:
+  - name: "pages" # Name of the collection
+    label: "Pages" # Label in the CMS
+    folder: "content/pages" # Folder where page content is stored
+    create: true # Allow users to create new pages
+    slug: "{{slug}}" # Slug format for filenames
+    fields: # Define fields for the collection
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "blog" # Name of the collection
+    label: "Blog Posts" # Label in the CMS
+    folder: "content/blog" # Folder where blog posts are stored
+    create: true # Allow users to create new blog posts
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Date-based slug format
+    fields: # Define fields for the collection
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list" }
